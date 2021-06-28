@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WiLLY</title>
+		<!-- <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/index.css" /> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta charset="utf-8">
+
+    <!-- Add three.js lib here -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/103/three.js"></script> -->
+  </head>
+
+  <!-- background color -->
+  <body style="background-color: rgb(0, 0, 0);"></body>
+
+  <body>
+    <div id="container"></div>
+
+    <div class="game_info" style="color:white" >
+      <div><b>SCORE: </b><div id="score"></div>
+      <div><b>TIME: </b><div id="remainingTime"></div>
+    </div>
+
+
+    <!-- build -->
+    <script src="build/three.js"></script>
+
+    <!-- control -->
+    <script src="js/renderers/Projector.js"></script>
+    <script src="js/controls/OrbitControls.js"></script>
+    <script src="js/WebGL.js"></script>
+    <script src="js/libs/dat.gui.min.js"></script>
+    <script src="js/libs/ParametricGeometries.js"></script>
+    <script src="js/scenes/geometry.js"></script>
+    <script src="js/libs/stats.min.js"></script>
+    
+    <script src="Explosion.js"></script>
+
+    
+    <!-- <script type="text/javascript">document.body.style.cursor = 'none'</script> -->
+    
+    <!-- main codes-->
+    <script src="index_0620.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=UTF-8 />
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <button type="button" id="vehicle">Change</button>
+    <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <!-- <script src="js/Vehicle.js"></script> -->
+    <script src="GLTFLoader.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script> -->
+    <!-- <script src="js/index.js"></script> -->
+    <script>
+      let scene, camera, renderer, counter_V, counter_S;
+      var vehicle1,vehicle2,vehicle3,vehicle4,vehicle5,vehicle6;
+      let skybox, skyboxGeo;
+      var materialArray, materialArray2, materialArray3;
+    
+      function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xdddddd);
+        camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,50000);
+        // camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,5000);
+        // camera.position.set(-900,-200,-900);
+        camera.rotation.y = 45/180*Math.PI;
+        camera.position.set(-900,-500,-900);
+
+        hlight = new THREE.AmbientLight(0x404040,10);
+        scene.add(hlight);
+
+        directionalLight = new THREE.DirectionalLight(0xffffff,100);
+        directionalLight.position.set(0,1,20);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+
+        
+        // light = new THREE.PointLight(0xc4c4c4,10);
+        // light.position.set(0,300,500);
+        // scene.add(light);
+
+        // light2 = new THREE.PointLight(0xc4c4c4,10);
+        // light2.position.set(500,100,0);
+        // scene.add(light2);
+
+        // light3 = new THREE.PointLight(0xc4c4c4,10);
+        // light3.position.set(0,100,-500);
+        // scene.add(light3);
+
+        // light4 = new THREE.PointLight(0xc4c4c4,10);
+        // light4.position.set(-500,300,0);
+        // scene.add(light4);
+
+        renderer = new THREE.WebGLRenderer({antialias:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        let loader = new THREE.GLTFLoader();
+        // let scene1;
+        // loader.load('\\models\\02\\out.glb',function(gltf){
+        //         vehicle1 = gltf.scene.children[0];
+        //         vehicle1.scale.set(500,500,500);
+        //         vehicle1.position.set(0,-4700,3000);
+        //         vehicle1.rotation.z = 45/180*Math.PI;             
+        //         scene.add(gltf.scene);
+        //         scene1 = gltf;
+        //         animate();
+        //     });
+        // scene.remove(scene1);
+
+        // loader.load('\\models\\03\\out.glb',function(gltf){
+        //         let car = gltf.scene.children[0]
+        //         car.scale.set(100,100,100);
+        //         car.position.set(-3000,-4700,4000);
+        //         car.rotation.z = 90/180*Math.PI;           
+        //         scene.add(gltf.scene);
+        //         animate();
+        //     });
+
+        // loader.load('\\models\\04\\out.glb',function(gltf){
+		loader.load('./models/04/out.glb',function(gltf){
+            console.log(gltf)
+            let car = gltf.scene.children[0]
+            car.scale.set(2000,2000,2000);
+            car.position.set(2000,-4700,2000);           
+            scene.add(gltf.scene);
+            animate();
+        });
+
+        let controls = new THREE.OrbitControls(camera);
+        controls.addEventListener('change', renderer);
+        // controls.minDistance = 500;
+        // controls.maxDistance = 1500;
+        
+        counter_S = 0;
+
+        materialArray = [];
+        let texture_ft = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_ft.jpg');
+        let texture_bk = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_bk.jpg');
+        let texture_up = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_up.jpg');
+        let texture_dn = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_dn.jpg');
+        let texture_rt = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_rt.jpg');
+        let texture_lf = new THREE.TextureLoader().load( './skyboxes/penguins (2)/arid2_lf.jpg');
+          
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_up }));
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_dn }));
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_rt }));
+        materialArray.push(new THREE.MeshBasicMaterial( { map: texture_lf }));
+        
+        for (let i = 0; i < 6; i++)
+           materialArray[i].side = THREE.BackSide;
+
+        materialArray2 = [];
+        texture_ft = new THREE.TextureLoader().load( './skyboxes/penguins/arid_ft.jpg');
+        texture_bk = new THREE.TextureLoader().load( './skyboxes/penguins/arid_bk.jpg');
+        texture_up = new THREE.TextureLoader().load( './skyboxes/penguins/arid_up.jpg');
+        texture_dn = new THREE.TextureLoader().load( './skyboxes/penguins/arid_dn.jpg');
+        texture_rt = new THREE.TextureLoader().load( './skyboxes/penguins/arid_rt.jpg');
+        texture_lf = new THREE.TextureLoader().load( './skyboxes/penguins/arid_lf.jpg');
+          
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_up }));
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_dn }));
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_rt }));
+        materialArray2.push(new THREE.MeshBasicMaterial( { map: texture_lf }));
+        
+        for (let i = 0; i < 6; i++)
+           materialArray2[i].side = THREE.BackSide;
+
+        materialArray3 = [];
+        texture_ft = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_ft.jpg');
+        texture_bk = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_bk.jpg');
+        texture_up = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_up.jpg');
+        texture_dn = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_dn.jpg');
+        texture_rt = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_rt.jpg');
+        texture_lf = new THREE.TextureLoader().load('./skyboxes/penguins (3)/barren_lf.jpg');
+          
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_up }));
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_dn }));
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_rt }));
+        materialArray3.push(new THREE.MeshBasicMaterial( { map: texture_lf }));
+        
+        for (let i = 0; i < 6; i++)
+           materialArray3[i].side = THREE.BackSide;
+
+        skyboxGeo = new THREE.BoxGeometry( 10000, 10000, 10000);
+        skybox = new THREE.Mesh( skyboxGeo, materialArray );
+        scene.add( skybox );  
+        animate();
+      }
+      function animate() {
+        renderer.render(scene,camera);
+        requestAnimationFrame(animate);
+      }
+      init();
+      function changeSkybox(scene, counter_S){
+        this.scene = scene;        
+        switch(counter_S){
+            case 0:
+                scene.remove(skybox);
+                skybox = new THREE.Mesh( skyboxGeo, materialArray );
+                scene.add( skybox );  
+                animate();
+                break;
+            case 1:
+                scene.remove(skybox);
+                skybox = new THREE.Mesh( skyboxGeo, materialArray2 );
+                scene.add( skybox );  
+                animate();
+                break;
+            case 2:
+                scene.remove(skybox);
+                skybox = new THREE.Mesh( skyboxGeo, materialArray3 );
+                scene.add( skybox );  
+                animate();
+                break;
+            default:
+                break;                
+        }       
+      }
+
+      (function(){
+        const animateBtn = document.getElementById( 'vehicle' );
+        animateBtn.addEventListener( 'click', function() {
+            if(counter_S < 2){
+                counter_S++;
+            }else{
+                counter_S = 0;
+            }
+            changeSkybox(scene,counter_S);
+        });
+      })();
+      
+    </script>
+  </body>
+</html>

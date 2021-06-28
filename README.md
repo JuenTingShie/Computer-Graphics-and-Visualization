@@ -4,7 +4,7 @@ Collection of student's CV Projects
 
 ## Projects
 
-1. 打磚塊 [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/ThreeJS_Arkanoid-master-/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/ThreeJS_Arkanoid-master-/)
+1. 打磚塊 [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/ThreeJS_Arkanoid-master/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/ThreeJS_Arkanoid-master/)
 
     > 左鍵開始發球，滑鼠左右移動    
     > 點選AI自動接球

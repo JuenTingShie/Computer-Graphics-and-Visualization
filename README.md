@@ -1,6 +1,8 @@
 # Computer Graphics and Visualization (電腦繪圖與視覺模擬)
 
-Collection of student's CV Projects
+Collection of student's CV Projects.    
+
+:warning: **If you are student who made one of these projects or original creater, please create [issue](https://github.com/JuenTingShie/Computer-Graphics-and-Visualization/issues/new/choose) or modify this readme and create [PR](https://github.com/JuenTingShie/Computer-Graphics-and-Visualization/compare)**    
 
 ## Projects
 
@@ -15,10 +17,12 @@ Collection of student's CV Projects
 
 3. 賓果盤 [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/vsproject/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/vsproject/)
 
+    > author: M10805506   
     > 隨機產生數字的賓果盤，左鍵點選標記方塊    
 
 4. Virtual World [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/CVProject/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/CVProject/)
-
+    
+    > author: M10805504    
     > 產生3D空間與物件，可透過按鈕變換場景    
 
 5. 堆疊遊戲 [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/stack-games/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/stack-games/)

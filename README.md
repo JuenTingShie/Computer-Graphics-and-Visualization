@@ -20,3 +20,11 @@ Collection of student's CV Projects
 4. Virtual World [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/CVProject/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/CVProject/)
 
     > 產生3D空間與物件，可透過按鈕變換場景    
+
+5. 堆疊遊戲 [(https://juentingshie.github.io/Computer-Graphics-and-Visualization/stack-games/)](https://juentingshie.github.io/Computer-Graphics-and-Visualization/stack-games/)
+
+    > author: M10905508    
+    > 將方塊堆疊在一起，當方塊重疊時，點擊滑鼠或按空白鍵，你能最高能達到什麼顏色?    
+    > 點擊或按空白鍵開始遊戲
+    > 
+    > 參考: [(https://blog.devgenius.io/build-a-stack-game-using-three-js-ea4d09963a62)](https://blog.devgenius.io/build-a-stack-game-using-three-js-ea4d09963a62)
